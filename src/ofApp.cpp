@@ -138,26 +138,35 @@ void ofApp::draw() {
 			ofSetColor(255);
 			//texture.draw(0, 0, ofGetWidth(), ofGetHeight());
 			//texture.readToPixels(pix);
-			int skip = 5;
-			for (int k = 0; k < data.size(); k+=skip) {
-				if (k == 0) {
-					y = 0;
-					x = 0;
+			//int skip = 5;
+			//for (int k = 0; k < data.size(); k+=skip) {
+			//	if (k == 0) {
+			//		y = 0;
+			//		x = 0;
+			//	}
+			//	if (x >= 640) {
+			//		y++;
+			//		x = 0;
+			//	}
+			//	x+=skip;
+
+			//	float m_x = ofMap(x, mainWidth, 0, 0 - TLCalibration.x, ofGetWidth() + BRCalibration.x);
+			//	float m_y = ofMap(y, mainHeight, 0, 0 - TLCalibration.y, ofGetHeight() + BRCalibration.y);
+
+			//	ofColor blue = ofColor::fromHsb(170, ofMap(data[k], 0, 4000, 0, 255), 255);
+			//	ofSetColor(blue);
+
+			//	ofDrawCircle(x, y, 4);
+			//	
+			//}
+
+			for (int y = 0; y < mainHeight; y += 5) {
+				for (int x = 0; x < mainWidth; x += 5) {
+					int index = y * mainWidth + x;
+					ofColor blue = ofColor::fromHsb(170, ofMap(data[index], 0, 4000, 0, 255), 255);
+					ofSetColor(blue);
+					ofDrawCircle(x, y, 2);
 				}
-				if (x >= 640) {
-					y++;
-					x = 0;
-				}
-				x+=skip;
-
-				float m_x = ofMap(x, mainWidth, 0, 0 - TLCalibration.x, ofGetWidth() + BRCalibration.x);
-				float m_y = ofMap(y, mainHeight, 0, 0 - TLCalibration.y, ofGetHeight() + BRCalibration.y);
-
-				ofColor blue = ofColor::fromHsb(170, ofMap(data[k], 0, 4000, 0, 255), 255);
-				ofSetColor(blue);
-
-				ofDrawCircle(x, y, 4);
-				
 			}
 
 			//for (int i = 1; i < mainWidth; i += 1) {
